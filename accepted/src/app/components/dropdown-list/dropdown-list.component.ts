@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-dropdown-list',
@@ -8,6 +8,7 @@ import {Component, Input} from '@angular/core';
 export class DropdownListComponent {
 
   @Input() dropdownOptions!: {  idLeague: string, strLeague: string, strLeagueAlternate: string, strSport: string }[];
+  @Output() optionSelected = new EventEmitter<{  idLeague: string, strLeague: string, strLeagueAlternate: string, strSport: string }>();
 
   selectedOption!: {
     idLeague: string,
@@ -17,6 +18,8 @@ export class DropdownListComponent {
   };
 
   onSelectionChange(event: any) {
-    this.selectedOption = event.target.value;
+    const selectedIndex = event.target.selectedIndex - 1;
+    this.selectedOption = this.dropdownOptions[selectedIndex];
+    this.optionSelected.emit(this.selectedOption);
   }
 }

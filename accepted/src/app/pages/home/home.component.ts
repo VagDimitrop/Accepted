@@ -27,4 +27,7 @@ constructor(private listService: ListServicesService) {
     }
   }
 
+  onOptionSelected(optionValue: {  idLeague: string, strLeague: string, strLeagueAlternate: string, strSport: string }) {
+  }
+
 }
