@@ -1,0 +1,8 @@
+<div>
+  <select (change)="onSelectionChange($event)">
+    <option value="" disabled selected hidden>Please select an option</option>
+    <option *ngFor="let option of dropdownOptions" [value]="option">
+      {{ option.strLeague }}
+    </option>
+  </select>
+</div>
