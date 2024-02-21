@@ -11,6 +11,7 @@ export class HomeComponent {
     strLeague: string,
     strLeagueAlternate: string,
     strSport: string }[];
+
   teams: any[] = [];
 constructor(private listService: ListServicesService) {
   }
@@ -27,7 +28,16 @@ constructor(private listService: ListServicesService) {
     }
   }
 
+  async loadTeams(leagueName: string) {
+    try {
+      const data = await this.listService.getTeamsByLeagueName(leagueName);
+      this.teams = data;
+    } catch (error) {
+      console.error('Error fetching teams:', error);
+    }
+  }
   onOptionSelected(optionValue: {  idLeague: string, strLeague: string, strLeagueAlternate: string, strSport: string }) {
+    this.loadTeams(optionValue.strLeague);
   }
 
 }

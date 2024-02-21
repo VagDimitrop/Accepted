@@ -3,3 +3,7 @@
   (optionSelected)="onOptionSelected($event)"
 >
 </app-dropdown-list>
+
+<div *ngIf="teams.length > 0">
+<app-list [teams]="teams"></app-list>
+</div>

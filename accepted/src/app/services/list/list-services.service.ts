@@ -18,5 +18,14 @@ export class ListServicesService {
       return [];
     }
   }
-  
+  async getTeamsByLeagueName(leagueName: string): Promise<any[]> {
+    try {
+      const data = await this.http.get<any>(`https://www.thesportsdb.com/api/v1/json/3/search_all_teams.php?l=${leagueName}`).toPromise();
+      return data.teams;
+    } catch (error) {
+      console.error('Error fetching teams:', error);
+      return [];
+    }
+  }
+
 }
