@@ -1,16 +1,16 @@
 <div class="container">
   <div class="row">
-    <div *ngFor="let team of teams" class="col-sm-2 col-md-3 item">
+    <div *ngFor="let team of teams" class="col-sm-6 col-md-3 item">
       <img [src]="team.strTeamBadge" alt="{{ team.strTeam }}" class="img-thumbnail">
       <div class="team-name">
         <span>{{ team.strTeam }}</span>
       </div>
-      <div class="team-league">
-        <span>{{ team.strLeague }}</span>
-      </div>
       <div class="team-stadium">
-        <span>{{ team.strStadium }}</span>
-      <div class="team-league">
+        <span>Stadium: {{ team.strStadium }}</span>
+      </div>
+      <div class="team-location">
+        <span>Location: {{ team.strStadiumLocation }}</span>
+      </div>
     </div>
   </div>
 </div>

@@ -14,6 +14,7 @@ import {HttpClientModule} from "@angular/common/http";
   declarations: [
     AppComponent,
     DropdownListComponent,
+    ListComponent,
     HomeComponent,
     DetailsComponent
   ],
