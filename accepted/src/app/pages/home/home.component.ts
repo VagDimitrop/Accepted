@@ -7,37 +7,60 @@ import { ListServicesService } from '../../services/list/list-services.service';
   styleUrls: ['./home.component.less']
 })
 export class HomeComponent {
-  leagues!: { idLeague: string,
-    strLeague: string,
-    strLeagueAlternate: string,
-    strSport: string }[];
-
+  originalTeamsModel: any[] = [];
   teams: any[] = [];
+  locations: string[] = [];
 constructor(private listService: ListServicesService) {
   }
 
   ngOnInit() {
-    this.loadLeagues();
+    this.loadTeams()
+      .then(() => {
+        this.teams = this.originalTeamsModel;
+        this.locations = this.getLocations(this.originalTeamsModel);
+      })
+      .catch((error) => {
+        console.error('Error fetching teams:', error);
+      });
   }
 
-  async loadLeagues() {
+  async loadTeams() {
     try {
-      this.leagues = await this.listService.getAllLeagues();
-    } catch (error) {
-      console.error('Error fetching leagues:', error);
-    }
-  }
-
-  async loadTeams(leagueName: string) {
-    try {
-      const data = await this.listService.getTeamsByLeagueName(leagueName);
-      this.teams = data;
+      const data = await this.listService.getTeamsByLeagueName();
+      this.originalTeamsModel = data;
     } catch (error) {
       console.error('Error fetching teams:', error);
     }
   }
-  onOptionSelected(optionValue: {  idLeague: string, strLeague: string, strLeagueAlternate: string, strSport: string }) {
-    this.loadTeams(optionValue.strLeague);
+
+  getLocations(teams:any) {
+    let locations: any[] = [];
+    teams.forEach((team:any) => {
+      if (team.strStadiumLocation) {
+        let words = team.strStadiumLocation.split(',');
+
+        let location = words.length > 1 ? words[1].trim() : words[0].trim();
+        if (!locations.includes(location)) {
+          locations.push(location);
+        }
+      }
+    });
+    return locations;
   }
 
+  filterTeams(locationSelected: string) {
+    this.teams = this.originalTeamsModel.filter((team) => {
+      if (team.strStadiumLocation) {
+        let words = team.strStadiumLocation.split(',');
+
+        let location = words.length > 1 ? words[1].trim() : words[0].trim();
+        return location === locationSelected;
+      }
+      return false;
+    });
+  }
+
+  onOptionSelected(locationSelected: string ) {
+    this.filterTeams(locationSelected);
+  }
 }

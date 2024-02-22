@@ -1,8 +1,9 @@
-<app-dropdown-list
-  [dropdownOptions]="leagues"
+  <app-dropdown-list
+  [dropdownOptions]="locations"
   (optionSelected)="onOptionSelected($event)"
->
+  >
 </app-dropdown-list>
+
 
 <div *ngIf="teams.length > 0">
 <app-list [teams]="teams"></app-list>

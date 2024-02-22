@@ -9,18 +9,10 @@ export class ListServicesService {
   constructor(private http: HttpClient) {
   }
 
-  async getAllLeagues(): Promise<{ idLeague: string, strLeague: string, strLeagueAlternate: string, strSport: string }[]> {
+
+  async getTeamsByLeagueName(): Promise<any[]> {
     try {
-      const data = await this.http.get<any>('https://www.thesportsdb.com/api/v1/json/3/all_leagues.php').toPromise();
-      return data.leagues;
-    } catch (error) {
-      console.error('Error fetching leagues:', error);
-      return [];
-    }
-  }
-  async getTeamsByLeagueName(leagueName: string): Promise<any[]> {
-    try {
-      const data = await this.http.get<any>(`https://www.thesportsdb.com/api/v1/json/3/search_all_teams.php?l=${leagueName}`).toPromise();
+      const data = await this.http.get<any>(`https://www.thesportsdb.com/api/v1/json/3/search_all_teams.php?l=English_Premier_League`).toPromise();
       return data.teams;
     } catch (error) {
       console.error('Error fetching teams:', error);

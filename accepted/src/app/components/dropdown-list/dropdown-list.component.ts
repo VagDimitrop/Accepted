@@ -7,15 +7,10 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 })
 export class DropdownListComponent {
 
-  @Input() dropdownOptions!: {  idLeague: string, strLeague: string, strLeagueAlternate: string, strSport: string }[];
-  @Output() optionSelected = new EventEmitter<{  idLeague: string, strLeague: string, strLeagueAlternate: string, strSport: string }>();
+  @Input() dropdownOptions!: string[];
+  @Output() optionSelected = new EventEmitter<string>();
 
-  selectedOption!: {
-    idLeague: string,
-    strLeague: string,
-    strLeagueAlternate: string,
-    strSport: string
-  };
+  selectedOption!: string;
 
   onSelectionChange(event: any) {
     const selectedIndex = event.target.selectedIndex - 1;
