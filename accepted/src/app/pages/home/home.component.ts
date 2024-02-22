@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ListServicesService } from '../../services/list/list-services.service';
+import {Team} from "../../interfaces/teams.interface";
 
 @Component({
   selector: 'app-home',
@@ -7,8 +8,8 @@ import { ListServicesService } from '../../services/list/list-services.service';
   styleUrls: ['./home.component.less']
 })
 export class HomeComponent {
-  originalTeamsModel: any[] = [];
-  teams: any[] = [];
+  originalTeamsModel: Team[] = [];
+  teams: Team[] = [];
   locations: string[] = [];
 constructor(private listService: ListServicesService) {
   }
@@ -33,9 +34,9 @@ constructor(private listService: ListServicesService) {
     }
   }
 
-  getLocations(teams:any) {
-    let locations: any[] = [];
-    teams.forEach((team:any) => {
+  getLocations(teams:Team[]) {
+    let locations: string[] = [];
+    teams.forEach((team:Team) => {
       if (team.strStadiumLocation) {
         let words = team.strStadiumLocation.split(',');
 
