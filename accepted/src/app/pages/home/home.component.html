@@ -1,12 +1,14 @@
-<input (blur)="searchTeams()"
-       [(ngModel)]="searchKeyword"
->
-<app-dropdown-list
-  [dropdownOptions]="locations"
-  (optionSelected)="onOptionSelected($event)"
->
-</app-dropdown-list>
-
+<div class="header">
+  <input (blur)="searchTeams()"
+         [(ngModel)]="searchKeyword"
+         placeholder="Search for a team"
+  >
+  <app-dropdown-list
+    [dropdownOptions]="locations"
+    (optionSelected)="onOptionSelected($event)"
+  >
+  </app-dropdown-list>
+</div>
 
 <div>
   <app-list
