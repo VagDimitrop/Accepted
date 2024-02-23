@@ -92,6 +92,8 @@ constructor(private listService: ListServicesService) {
       this.teams = this.filteredTeams.filter((team) => {
         return this.inputTeams.includes(team);
       });
+    } else if (this.searchKeyword.trim() !== '' && this.filteredTeams.length === 0) {
+      this.teams = this.inputTeams;
     }
   }
 
