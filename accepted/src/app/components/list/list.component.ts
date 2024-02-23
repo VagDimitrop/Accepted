@@ -9,5 +9,6 @@ import {Team} from "../../interfaces/teams.interface";
 export class ListComponent {
 
   @Input() teams!: Team[];
+  @Input() dataHasLoaded!: boolean;
 
 }

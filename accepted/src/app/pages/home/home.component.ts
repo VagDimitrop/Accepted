@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ListServicesService } from '../../services/list/list-services.service';
-import {Team} from "../../interfaces/teams.interface";
+import { Team } from "../../interfaces/teams.interface";
+
 
 @Component({
   selector: 'app-home',
@@ -11,6 +12,11 @@ export class HomeComponent {
   originalTeamsModel: Team[] = [];
   teams: Team[] = [];
   locations: string[] = [];
+  searchKeyword: string = '';
+  dataHasLoaded: boolean = false;
+
+  filteredTeams: Team[] = [];
+  inputTeams: Team[] = [];
 constructor(private listService: ListServicesService) {
   }
 
@@ -29,6 +35,7 @@ constructor(private listService: ListServicesService) {
     try {
       const data = await this.listService.getTeamsByLeagueName();
       this.originalTeamsModel = data;
+      this.dataHasLoaded = true;
     } catch (error) {
       console.error('Error fetching teams:', error);
     }
@@ -36,6 +43,7 @@ constructor(private listService: ListServicesService) {
 
   getLocations(teams:Team[]) {
     let locations: string[] = [];
+    locations.push('All locations');
     teams.forEach((team:Team) => {
       if (team.strStadiumLocation) {
         let words = team.strStadiumLocation.split(',');
@@ -50,15 +58,41 @@ constructor(private listService: ListServicesService) {
   }
 
   filterTeams(locationSelected: string) {
-    this.teams = this.originalTeamsModel.filter((team) => {
-      if (team.strStadiumLocation) {
-        let words = team.strStadiumLocation.split(',');
+    if (locationSelected === 'All locations') {
+      this.filteredTeams = this.originalTeamsModel;
+    } else {
+      this.filteredTeams = this.originalTeamsModel.filter((team) => {
+        if (team.strStadiumLocation) {
+          let words = team.strStadiumLocation.split(',');
 
-        let location = words.length > 1 ? words[1].trim() : words[0].trim();
-        return location === locationSelected;
-      }
-      return false;
-    });
+          let location = words.length > 1 ? words[1].trim() : words[0].trim();
+          return location === locationSelected;
+        }
+        return false;
+      });
+    }
+    this.applySearchTerms();
+  }
+
+  searchTeams() {
+    if (this.searchKeyword.trim() === '') {
+      this.inputTeams = this.originalTeamsModel;
+    } else {
+      this.inputTeams = this.originalTeamsModel.filter(team =>
+        team.strTeam.toLowerCase().includes(this.searchKeyword.toLowerCase())
+      );
+    }
+    this.applySearchTerms();
+  }
+
+  applySearchTerms() {
+    if (this.searchKeyword.trim() === '' && this.filteredTeams.length > 0) {
+      this.teams = this.filteredTeams;
+    } else if (this.searchKeyword.trim() !== '' && this.filteredTeams.length > 0) {
+      this.teams = this.filteredTeams.filter((team) => {
+        return this.inputTeams.includes(team);
+      });
+    }
   }
 
   onOptionSelected(locationSelected: string ) {

@@ -1,10 +1,16 @@
-  <app-dropdown-list
+<input (blur)="searchTeams()"
+       [(ngModel)]="searchKeyword"
+>
+<app-dropdown-list
   [dropdownOptions]="locations"
   (optionSelected)="onOptionSelected($event)"
-  >
+>
 </app-dropdown-list>
 
 
-<div *ngIf="teams.length > 0">
-<app-list [teams]="teams"></app-list>
+<div>
+  <app-list
+    [teams]="teams"
+    [dataHasLoaded]="dataHasLoaded"
+  ></app-list>
 </div>
