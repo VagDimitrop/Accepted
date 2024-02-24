@@ -25,4 +25,8 @@ export class DetailsComponent {
     this.teams.push(this.team);
     this.team = this.teams[0];
   }
+
+  navigateToHomePage() {
+    this.router.navigate(['']);
+  }
 }
