@@ -1,18 +1,27 @@
 <div class="header">
-  <input (blur)="searchTeams()"
-         [(ngModel)]="searchKeyword"
-         placeholder="Search for a team"
-  >
-  <app-dropdown-list
-    [dropdownOptions]="locations"
-    (optionSelected)="onOptionSelected($event)"
-  >
-  </app-dropdown-list>
+  <h3>Welcome to the EPL Team Finder</h3>
+</div>
+
+<div class="sub-header">
+  <span>Our unique platform gives you two options to find your favorite EPL team. <br>
+    You can either search a team by its name or filter the teams by location.
+  </span>
+  <div class="actions-container">
+
+    <input (blur)="searchTeams()"
+           [(ngModel)]="searchKeyword"
+           placeholder="Search for a team">
+
+    <app-dropdown-list
+      [dropdownOptions]="locations"
+      (optionSelected)="onOptionSelected($event)">
+    </app-dropdown-list>
+  </div>
 </div>
 
 <div>
   <app-list
     [teams]="teams"
-    [dataHasLoaded]="dataHasLoaded"
-  ></app-list>
+    [dataHasLoaded]="dataHasLoaded">
+  </app-list>
 </div>
