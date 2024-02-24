@@ -9,7 +9,8 @@ import {Team} from "../../interfaces/teams.interface";
 })
 export class DetailsComponent {
   team!: Team;
-  teams!: Team[]
+  teams!: Team[];
+  title: string = 'Team Details';
 
   constructor(private router: Router) {
     const navigation = this.router.getCurrentNavigation();

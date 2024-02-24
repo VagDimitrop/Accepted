@@ -14,9 +14,9 @@ export class HomeComponent {
   locations: string[] = [];
   searchKeyword: string = '';
   dataHasLoaded: boolean = false;
-
   filteredTeams: Team[] = [];
   inputTeams: Team[] = [];
+  title: string = 'Welcome to the EPL Team Finder';
 constructor(private listService: ListServicesService) {
   }
 

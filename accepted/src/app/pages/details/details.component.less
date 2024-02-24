@@ -8,6 +8,29 @@
   box-shadow:  3px 2px 0 rgba(0, 0, 0, 0.2);
 }
 
+.back-button {
+  background-image: url("src/assets/icon-arrow-left.svg");
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-position: center;
+
+  height: 35px;
+  width: 35px;
+  background-size: 30px;
+
+  position: absolute;
+  top: 17px;
+  left: 30px;
+
+  border: none;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: #b3b3b3;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+  }
+}
+
 :host ::ng-deep app-list {
   .row {
     .item {
@@ -21,7 +44,7 @@
   }
 }
 
-.club-details-info {
+.team-details-info {
   width: 80%;
 
   position: relative;
@@ -35,7 +58,7 @@
   padding: 10px 25px;
   margin-bottom: 50px;
 
-  .club-details-info-single-item {
+  .team-details-info-single-item {
     display: flex;
     flex-direction: column;
 
@@ -48,14 +71,14 @@
     }
   }
 
-  .club-details-info-multiple-items {
+  .team-details-info-multiple-items {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
     margin: 10px 0;
 
-    .club-details-info-column-item {
+    .team-details-info-column-item {
       display: flex;
       flex-direction: column;
 
