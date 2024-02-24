@@ -1,0 +1,68 @@
+.title-container {
+  display: flex;
+  justify-content: center;
+
+  padding: 20px 0;
+
+  background-color: #e0e0e0;
+  box-shadow:  3px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+:host ::ng-deep app-list {
+  .row {
+    .item {
+      margin: 25px 0;
+      cursor: default;
+      width: 100%;
+      &:hover {
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+}
+
+.club-details-info {
+  width: 80%;
+
+  position: relative;
+  left: 10%;
+
+  background-color: #e0e0e0;
+  box-shadow: 3px 3px 2px 0 rgba(0, 0, 0, 0.2);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+
+  padding: 10px 25px;
+  margin-bottom: 50px;
+
+  .club-details-info-single-item {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+
+    h4 {
+      align-self: center;
+    }
+  }
+
+  .club-details-info-multiple-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px 0;
+
+    .club-details-info-column-item {
+      display: flex;
+      flex-direction: column;
+
+      p {
+        display: inline;
+        align-self: center;
+      }
+    }
+  }
+}
