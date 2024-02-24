@@ -94,6 +94,8 @@ constructor(private listService: ListServicesService) {
       });
     } else if (this.searchKeyword.trim() !== '' && this.filteredTeams.length === 0) {
       this.teams = this.inputTeams;
+    } else if (this.searchKeyword.trim() === '' && this.filteredTeams.length === 0) {
+      this.teams = this.originalTeamsModel;
     }
   }
 
