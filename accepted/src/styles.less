@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+
+@primary-background-color-light: #fafafa;
+@secondary-background-color-light: #e0e0e0;
+@text-color-light: #000000;
+
+// Variables for dark mode
+@primary-background-color-dark: #1e1e1e;
+@secondary-background-color-dark: #2e2e2e;
+@text-color-dark: #e0e0e0;
+
+// Global styles
+body {
+  background-color: @primary-background-color-light;
+  @color: @text-color-light;
+}
+
+body.dark-mode {
+  background-color: @primary-background-color-dark;
+  color: @text-color-dark;
+}

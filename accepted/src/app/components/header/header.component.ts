@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {ThemeServicesService} from "../../services/theme/theme-services.service";
 
 @Component({
   selector: 'app-header',
@@ -8,4 +9,11 @@ import {Component, Input} from '@angular/core';
 export class HeaderComponent {
 
   @Input() title: string = '';
+
+  constructor(private sharedService: ThemeServicesService) {
+  }
+
+  toggleDarkMode() {
+    this.sharedService.emitEvent();
+  }
 }

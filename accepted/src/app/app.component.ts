@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ThemeServicesService} from "./services/theme/theme-services.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'accepted';
+
+  constructor(private themeService: ThemeServicesService) {}
+
+  ngOnInit() {
+    this.themeService.getEvent().subscribe(() => {
+      this.themeService.toggleTheme();
+    });
+  }
 }
