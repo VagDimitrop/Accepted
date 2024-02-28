@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {ThemeServicesService} from "../../services/theme/theme-services.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-header',
@@ -9,11 +10,21 @@ import {ThemeServicesService} from "../../services/theme/theme-services.service"
 export class HeaderComponent {
 
   @Input() title: string = '';
+  isDarkMode: boolean = false;
+  private themeSubscription: Subscription;
 
-  constructor(private sharedService: ThemeServicesService) {
+  constructor(private themeService: ThemeServicesService) {
+    this.isDarkMode = this.themeService.darkMode;
+    this.themeSubscription = this.themeService.getEvent().subscribe(() => {
+      this.isDarkMode = this.themeService.darkMode;
+    });
   }
 
   toggleDarkMode() {
-    this.sharedService.emitEvent();
+    this.themeService.emitEvent();
+  }
+
+  ngOnDestroy() {
+    this.themeSubscription.unsubscribe();
   }
 }

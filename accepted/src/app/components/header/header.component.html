@@ -1,5 +1,7 @@
 <div class="header">
   <h3>{{title}}</h3>
   <button class="dark-mode-toggle" (click)="toggleDarkMode()">
+    <img *ngIf="!isDarkMode" src="assets/moon.svg">
+    <img *ngIf="isDarkMode" src="assets/sun.svg">
   </button>
 </div>
