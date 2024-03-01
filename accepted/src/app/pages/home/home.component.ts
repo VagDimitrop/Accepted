@@ -18,7 +18,7 @@ export class HomeComponent {
   inputTeams: Team[] = [];
   title: string = 'Welcome to the EPL Team Finder';
 
-  constructor(private listService: SportsDBService) {
+  constructor(private sportsDBService: SportsDBService) {
   }
 
   ngOnInit() {
@@ -34,7 +34,7 @@ export class HomeComponent {
 
   async loadTeams() {
     try {
-      const data = await this.listService.getTeamsByLeagueName();
+      const data = await this.sportsDBService.getTeamsByLeagueName();
       this.originalTeamsModel = data;
       this.dataHasLoaded = true;
     } catch (error) {
