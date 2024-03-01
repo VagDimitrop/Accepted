@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {ThemeServicesService} from "../../services/theme/theme-services.service";
+import {ThemeService} from "../../services/theme/theme.service";
 import {Subscription} from "rxjs";
 
 @Component({
@@ -13,7 +13,7 @@ export class HeaderComponent {
   isDarkMode: boolean = false;
   private themeSubscription: Subscription;
 
-  constructor(private themeService: ThemeServicesService) {
+  constructor(private themeService: ThemeService) {
     this.isDarkMode = this.themeService.darkMode;
     this.themeSubscription = this.themeService.getEvent().subscribe(() => {
       this.isDarkMode = this.themeService.darkMode;

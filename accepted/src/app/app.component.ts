@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {ThemeServicesService} from "./services/theme/theme-services.service";
+import {ThemeService} from "./services/theme/theme.service";
 import {Subscription} from "rxjs";
 
 @Component({
@@ -11,7 +11,7 @@ export class AppComponent {
   title = 'accepted';
   private themeSubscription!: Subscription;
 
-  constructor(private themeService: ThemeServicesService) {}
+  constructor(private themeService: ThemeService) {}
 
   ngOnInit() {
     this.themeSubscription = this.themeService.getEvent().subscribe(() => {

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
-import { ListServicesService } from '../services/list/list-services.service';
+import { SportsDBService } from '../services/list/sportsDB.service';
 import {FormsModule} from "@angular/forms";
 import {ComponentsModule} from "../components/components.module";
 
@@ -15,7 +15,7 @@ import {ComponentsModule} from "../components/components.module";
     ComponentsModule
   ],
   providers: [
-    ListServicesService
+    SportsDBService
   ],
   exports: []
 })

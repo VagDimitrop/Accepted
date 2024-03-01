@@ -4,7 +4,7 @@ import {Subject} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class ThemeServicesService {
+export class ThemeService {
   private darkModeTrigger = new Subject<void>();
   darkMode: boolean = false;
 

@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ThemeServicesService } from './theme-services.service';
+import { ThemeService } from './theme.service';
 
 describe('SharedServicesService', () => {
-  let service: ThemeServicesService;
+  let service: ThemeService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ThemeServicesService);
+    service = TestBed.inject(ThemeService);
   });
 
   it('should be created', () => {

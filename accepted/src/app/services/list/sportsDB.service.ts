@@ -7,7 +7,7 @@ import {DialogComponent} from '../../components/dialog/dialog.component';
 @Injectable({
   providedIn: 'root'
 })
-export class ListServicesService {
+export class SportsDBService {
 
   constructor(private http: HttpClient, private dialog: MatDialog) {
   }

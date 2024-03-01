@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ListServicesService } from '../../services/list/list-services.service';
+import { SportsDBService } from '../../services/list/sportsDB.service';
 import { Team } from "../../interfaces/teams.interface";
 
 
@@ -17,7 +17,7 @@ export class HomeComponent {
   filteredTeams: Team[] = [];
   inputTeams: Team[] = [];
   title: string = 'Welcome to the EPL Team Finder';
-constructor(private listService: ListServicesService) {
+constructor(private listService: SportsDBService) {
   }
 
   ngOnInit() {

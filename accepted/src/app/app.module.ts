@@ -8,6 +8,7 @@ import {FormsModule} from "@angular/forms";
 import {PagesModule} from "./pages/pages.module";
 import {ComponentsModule} from "./components/components.module";
 import { MatDialogModule } from '@angular/material/dialog';
+import {ServicesModule} from "./services/services.module";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     FormsModule,
     PagesModule,
     ComponentsModule,
-    MatDialogModule
+    MatDialogModule,
+    ServicesModule
   ],
   providers: [],
   exports: [
