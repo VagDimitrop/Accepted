@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Subject} from "rxjs";
 
 @Injectable({
@@ -14,6 +14,7 @@ export class ThemeService {
     this.darkMode = savedTheme ? JSON.parse(savedTheme) : false;
     this.applyTheme();
   }
+
   emitEvent() {
     this.darkModeTrigger.next();
   }

@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { SportsDBService } from '../../services/list/sportsDB.service';
-import { Team } from "../../interfaces/teams.interface";
+import {Component} from '@angular/core';
+import {SportsDBService} from '../../services/list/sportsDB.service';
+import {Team} from "../../interfaces/teams.interface";
 
 
 @Component({
@@ -17,7 +17,8 @@ export class HomeComponent {
   filteredTeams: Team[] = [];
   inputTeams: Team[] = [];
   title: string = 'Welcome to the EPL Team Finder';
-constructor(private listService: SportsDBService) {
+
+  constructor(private listService: SportsDBService) {
   }
 
   ngOnInit() {
@@ -41,10 +42,10 @@ constructor(private listService: SportsDBService) {
     }
   }
 
-  getLocations(teams:Team[]) {
+  getLocations(teams: Team[]) {
     let locations: string[] = [];
     locations.push('All locations');
-    teams.forEach((team:Team) => {
+    teams.forEach((team: Team) => {
       if (team.strStadiumLocation) {
         let words = team.strStadiumLocation.split(',');
 
@@ -99,7 +100,7 @@ constructor(private listService: SportsDBService) {
     }
   }
 
-  onOptionSelected(locationSelected: string ) {
+  onOptionSelected(locationSelected: string) {
     this.filterTeams(locationSelected);
   }
 }
